@@ -29,12 +29,12 @@
 #include "SinricPro.h"
 #include "SinricProLight.h"
 
-#define WIFI_SSID         "ssid"    
-#define WIFI_PASS         "science@78"
-#define APP_KEY           "15ecef6e-fb3a-4fb0-8766-76206b5ae8a6"      // Should look like "de0bxxxx-1x3x-4x3x-ax2x-5dabxxxxxxxx"
-#define APP_SECRET        "5c2db9ef-2e41-4569-b802-5e6f9cbae7a0-b1c3fe19-e5b6-4f0c-b3ec-c334f2661f59"   // Should look like "5f36xxxx-x3x7-4x3x-xexe-e86724a9xxxx-4c4axxxx-3x3x-x5xe-x9x3-333d65xxxxxx"
-#define REDLIGHT_ID        "5eb805c732975c3247c5c11f"    // Should look like "5dc1564130xxxxxxxxxxxxxx"
-#define GREENLIGHT_ID      "5eb806b2d40803324e489020"    // Should look like "5dc1564130xxxxxxxxxxxxxx"
+#define WIFI_SSID         "YOUR-WIFI-SSID"    
+#define WIFI_PASS         "YOUR-WIFI-PASSWORD"
+#define APP_KEY           "YOUR-APP-KEY"      // Should look like "de0bxxxx-1x3x-4x3x-ax2x-5dabxxxxxxxx"
+#define APP_SECRET        "YOUR-APP-SECRET"   // Should look like "5f36xxxx-x3x7-4x3x-xexe-e86724a9xxxx-4c4axxxx-3x3x-x5xe-x9x3-333d65xxxxxx"
+#define LIGHT_ID          "YOUR-DEVICE-ID"    // Should look like "5dc1564130xxxxxxxxxxxxxx"
+#define BAUD_RATE         9600                // Change baudrate to your need
 
 #define BAUD_RATE         115200                // Change baudrate to your need
 
@@ -42,7 +42,7 @@ const int redlight=D5;
 const int greenlight=D6;
 
 bool onPowerState(const String &deviceId, bool &state) {
-    if(deviceId=="5eb805c732975c3247c5c11f"){
+    if(deviceId=="5axxxxxxxxxxxxxxxxxxxxxxxxx"){
        Serial.printf("Device %s power turned %s \r\n", deviceId.c_str(), state?"on":"off");
       if(state){
         digitalWrite(redlight,HIGH);
@@ -52,7 +52,7 @@ bool onPowerState(const String &deviceId, bool &state) {
         digitalWrite(redlight,LOW);
         }
     }
-    else if(deviceId=="5eb806b2d40803324e489020"){
+    else if(deviceId=="5bxxxxxxxxxxxxxxxxxxxxxxxxxxxx"){
        Serial.printf("Device %s power turned %s \r\n", deviceId.c_str(), state?"on":"off");
       if(state){
         digitalWrite(greenlight,HIGH);
@@ -65,12 +65,12 @@ bool onPowerState(const String &deviceId, bool &state) {
 }
 
 bool onBrightness(const String &deviceId, int &brightness) {
-  if(deviceId =="5eb805c732975c3247c5c11f"){
+  if(deviceId =="5axxxxxxxxxxxxxxxxxxxxxxxxx"){
     Serial.printf("Device %s brightness level changed to %d\r\n", deviceId.c_str(), brightness);
     int mappedIntensity = map(brightness, 0, 100, 0, 255);
     analogWrite(redlight,mappedIntensity);
   }
-  else if(deviceId=="5eb806b2d40803324e489020"){
+  else if(deviceId=="5bxxxxxxxxxxxxxxxxxxxxxxxx"){
      Serial.printf("Device %s brightness level changed to %d\r\n", deviceId.c_str(), brightness);
     int mappedIntensity = map(brightness, 0, 100, 0, 255);
      analogWrite(greenlight,mappedIntensity);

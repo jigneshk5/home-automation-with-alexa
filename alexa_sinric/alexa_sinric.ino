@@ -3,16 +3,14 @@
 #include <ESP8266WiFiMulti.h>
 #include <WebSocketsClient.h> //  https://github.com/kakopappa/sinric/wiki/How-to-add-dependency-libraries 
 #include <ArduinoJson.h> // https://github.com/kakopappa/sinric/wiki/How-to-add-dependency-libraries
-#include <Servo.h>
-Servo myservo;  // create servo object to control a servo
 
 ESP8266WiFiMulti WiFiMulti;
 WebSocketsClient webSocket;
 WiFiClient client;
 
-#define MyApiKey "f57014d3-d111-4747-ac2b-e506c4a242b0" // TODO: Change to your sinric API Key. Your API Key is displayed on sinric.com dashboard
-#define MySSID "ssid" // TODO: Change to your Wifi network SSID
-#define MyWifiPassword "science@78" // TODO: Change to your Wifi network password
+#define MyApiKey "xxxxx" // TODO: Change to your sinric API Key. Your API Key is displayed on sinric.com dashboard
+#define MySSID "xxxx" // TODO: Change to your Wifi network SSID
+#define MyWifiPassword "xxxxx" // TODO: Change to your Wifi network password
 
 #define API_ENDPOINT "http://sinric.com"
 #define HEARTBEAT_INTERVAL 300000 // 5 Minutes 
@@ -23,12 +21,12 @@ const int redlight=D5;
 const int greenlight=D6;
 
 void turnOn(String deviceId) {
-  if (deviceId == "5eb52d3c63387c4ffbce8fb7") // Device ID of first device
+  if (deviceId == "5axxxxxxxxxxxxxxxxxxx") // Device ID of first device
   {  
     Serial.print("Red Light turned on");
     digitalWrite(redlight,HIGH);
   } 
-  else if (deviceId == "5eb54e3363387c4ffbcec590") // Device ID of second device
+  else if (deviceId == "5bxxxxxxxxxxxxxxxxxxx") // Device ID of second device
   { 
     Serial.print("Green Light turned on");
     digitalWrite(greenlight,HIGH);
@@ -37,12 +35,12 @@ void turnOn(String deviceId) {
 }
 
 void turnOff(String deviceId) {
-   if (deviceId == "5eb52d3c63387c4ffbce8fb7") // Device ID of first device
+   if (deviceId == "5axxxxxxxxxxxxxxxxxxx") // Device ID of first device
    {  
     Serial.print("Red Light turned off"); 
      digitalWrite(redlight,LOW);
    }
-     else if (deviceId == "5eb54e3363387c4ffbcec590") // Device ID of second device
+     else if (deviceId == "5bxxxxxxxxxxxxxxxxxxx") // Device ID of second device
   { 
     Serial.print("Green Light turned off");
     digitalWrite(greenlight,LOW);
@@ -50,12 +48,12 @@ void turnOff(String deviceId) {
 
 }
 void setIntensity(String deviceId,int intensity) {
-   if (deviceId == "5eb52d3c63387c4ffbce8fb7") // Device ID of redLight
+   if (deviceId == "5axxxxxxxxxxxxxxxxxxx") // Device ID of redLight
    {   
      int mappedIntensity = map(intensity, 0, 100, 0, 255);
      analogWrite(redlight,mappedIntensity);
    }
-   else if (deviceId == "5eb54e3363387c4ffbcec590") // Device ID of greenLight
+   else if (deviceId == "5bxxxxxxxxxxxxxxxxxxx") // Device ID of greenLight
    { 
      int mappedIntensity = map(intensity, 0, 100, 0, 255);
      analogWrite(greenlight,mappedIntensity);
@@ -155,8 +153,6 @@ void setup() {
   webSocket.setReconnectInterval(5000);   // If you see 'class WebSocketsClient' has no member named 'setReconnectInterval' error update arduinoWebSockets
   pinMode(redlight,OUTPUT);
   pinMode(greenlight,OUTPUT);
-  myservo.attach(D8);  // attaches the servo on D8 to the servo object
-
 }
 
 void loop() {
