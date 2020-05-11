@@ -1,5 +1,14 @@
 # Home Automation with Alexa
 
+## YOUTUBE TUTORIAL LINKS
+
+1. Setting up Adafruit.io and IFTTT for Alexa (PART 1):- 
+2. Setting up Adafruit.io and IFTTT for Alexa (PART 2):- 
+
+3. Setting up SINRIC & SINRIC.PRO for Alexa:- 
+- PPT USED DURING THE SESSION:- alexa.pptx
+
+
 ## ARDUINO CODE WITH DESCRIPTION
 
 1. adafruit_ifttt/adafruit_ifttt.ino -> Arduino code for connecting with Adafruit.io using Adafruit Mqtt library.
@@ -12,17 +21,22 @@
 
 ## CIRCUIT DIAGRAM
 
-![](mqtt1.png)
+![](circuit.png)
 
 
 ## ADAFRUIT DASHBOARD WITH SETUP
 
-![](dashboard.png)
+![](adafruit_demo.png)
+
+
+## IFTTT APPLETS
+
+![](ifttt.PNG)
 
 
 ## SINRICPRO DASHBOARD WITH SETUP
 
-![](s22.png)
+![](sinric_demo.png)
 
 
 ## LINK FOR WRITTEN BLOG
