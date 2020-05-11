@@ -2,10 +2,9 @@
 
 ## YOUTUBE TUTORIAL LINKS
 
-1. Setting up Adafruit.io and IFTTT for Alexa (PART 1):- 
-2. Setting up Adafruit.io and IFTTT for Alexa (PART 2):- 
-
-3. Setting up SINRIC & SINRIC.PRO for Alexa:- 
+1. Setting up Adafruit.io and IFTTT for Alexa (PART 1):- https://youtu.be/TN50yeumrIg
+2. Setting up Adafruit.io and IFTTT for Alexa (PART 2):- https://youtu.be/OG-IKLtfaO8
+3. Setting up SINRIC & SINRIC.PRO for Alexa:- https://youtu.be/P-Fa-005bd4
 - PPT USED DURING THE SESSION:- alexa.pptx
 
 
