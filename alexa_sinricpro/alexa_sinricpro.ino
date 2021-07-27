@@ -33,16 +33,17 @@
 #define WIFI_PASS         "YOUR-WIFI-PASSWORD"
 #define APP_KEY           "YOUR-APP-KEY"      // Should look like "de0bxxxx-1x3x-4x3x-ax2x-5dabxxxxxxxx"
 #define APP_SECRET        "YOUR-APP-SECRET"   // Should look like "5f36xxxx-x3x7-4x3x-xexe-e86724a9xxxx-4c4axxxx-3x3x-x5xe-x9x3-333d65xxxxxx"
-#define LIGHT_ID          "YOUR-DEVICE-ID"    // Should look like "5dc1564130xxxxxxxxxxxxxx"
+#define RED_LIGHT_ID          "YOUR-DEVICE-ID"    // Should look like "5dc1564130xxxxxxxxxxxxxx"
+#define GREEN_LIGHT_ID          "YOUR-DEVICE-ID"    // Should look like "5dc1564130xxxxxxxxxxxxxx"
 #define BAUD_RATE         9600                // Change baudrate to your need
 
-#define BAUD_RATE         115200                // Change baudrate to your need
+//#define BAUD_RATE         115200                // Change baudrate to your need
 
 const int redlight=D5;
 const int greenlight=D6;
 
 bool onPowerState(const String &deviceId, bool &state) {
-    if(deviceId=="5axxxxxxxxxxxxxxxxxxxxxxxxx"){
+    if(deviceId==RED_LIGHT_ID){
        Serial.printf("Device %s power turned %s \r\n", deviceId.c_str(), state?"on":"off");
       if(state){
         digitalWrite(redlight,HIGH);
@@ -52,7 +53,7 @@ bool onPowerState(const String &deviceId, bool &state) {
         digitalWrite(redlight,LOW);
         }
     }
-    else if(deviceId=="5bxxxxxxxxxxxxxxxxxxxxxxxxxxxx"){
+    else if(deviceId==GREEN_LIGHT_ID){
        Serial.printf("Device %s power turned %s \r\n", deviceId.c_str(), state?"on":"off");
       if(state){
         digitalWrite(greenlight,HIGH);
@@ -65,12 +66,12 @@ bool onPowerState(const String &deviceId, bool &state) {
 }
 
 bool onBrightness(const String &deviceId, int &brightness) {
-  if(deviceId =="5axxxxxxxxxxxxxxxxxxxxxxxxx"){
+  if(deviceId ==RED_LIGHT_ID){
     Serial.printf("Device %s brightness level changed to %d\r\n", deviceId.c_str(), brightness);
     int mappedIntensity = map(brightness, 0, 100, 0, 255);
     analogWrite(redlight,mappedIntensity);
   }
-  else if(deviceId=="5bxxxxxxxxxxxxxxxxxxxxxxxx"){
+  else if(deviceId==GREEN_LIGHT_ID){
      Serial.printf("Device %s brightness level changed to %d\r\n", deviceId.c_str(), brightness);
     int mappedIntensity = map(brightness, 0, 100, 0, 255);
      analogWrite(greenlight,mappedIntensity);
@@ -92,8 +93,8 @@ void setupWiFi() {
 
 void setupSinricPro() {
   // get a new Light device from SinricPro
-  SinricProLight &myLight1 = SinricPro[REDLIGHT_ID];
-  SinricProLight &myLight2 = SinricPro[GREENLIGHT_ID];
+  SinricProLight &myLight1 = SinricPro[RED_LIGHT_ID];
+  SinricProLight &myLight2 = SinricPro[GREEN_LIGHT_ID];
 
   // set callback function to RED LIGHT
   myLight1.onPowerState(onPowerState);
